@@ -5,13 +5,26 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: "#EF7A08",
+        primary: {
+          DEFAULT: "#FF5A1F",
+          light: "#FF954E",
+          hover: "#1E40AF",
+          active: "#1E3A8A",
+          dark: "#111827",
+        },
+        secondary: {
+          DEFAULT: "#111827",
+          light: "#131b2d",
+        },
+        tertiary: {
+          DEFAULT: "#cbd5e1",
+        },
       },
     },
   },
   plugins: [
-    require('flowbite/plugin')({
+    require("flowbite/plugin")({
       charts: true,
-  }),
+    }),
   ],
 };

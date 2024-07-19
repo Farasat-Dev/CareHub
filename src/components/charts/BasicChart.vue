@@ -1,6 +1,6 @@
 <template>
   <div
-    class="relative flex flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md"
+    class="relative flex flex-col rounded-xl w-full bg-secondary bg-clip-border text-gray-700 shadow-md"
   >
     <div
       class="relative mx-4 mt-4 flex flex-col gap-4 overflow-hidden rounded-none bg-transparent bg-clip-border text-gray-700 shadow-none md:flex-row md:items-center"
