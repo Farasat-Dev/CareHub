@@ -37,7 +37,7 @@ onMounted(async () => {
         <ErrorMessage name="patientName" class="text-primary" />
       </div>
       <div class="flex flex-col justify-start items-start">
-        <label for="dateOfCheckIn" class="label">Date Of Check In</label>
+        <label for="dateOfCheckIn" class="label">Date Of Check In  </label>
         <Field
           name="dateOfCheckIn"
           placeholder="Enter date"
