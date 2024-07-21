@@ -1,4 +1,3 @@
-<script>
 import { createStore } from "vuex";
 
 export default createStore({
@@ -24,12 +23,13 @@ export default createStore({
     },
   },
 
-  getters: {
-    getPatients: (state) => state.patients,
-  },
+  // getters: {
+  //   getPatients(state) {
+  //     return state.patients;
+  //   },
+  // },
 
-//   getters: {
-//     getPatients: (state) => state.patients,
-//   },
+  //   getters: {
+  //     getPatients: (state) => state.patients,
+  //   },
 });
-</script>

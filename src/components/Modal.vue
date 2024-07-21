@@ -2,7 +2,9 @@
 import { computed } from "vue";
 import { useStore } from "vuex";
 import { Icon } from "@iconify/vue";
-export default   {
+import { useModal } from "../utills/useModal";
+
+export default {
   props: {
     title: {
       type: String,
@@ -11,16 +13,24 @@ export default   {
   },
 
   setup() {
-    const { state, dispatch } = useStore();
-    let modalState = computed(() => state.isModalOpen);
-    const closeModal = () => {
-      dispatch("closeModal");
-    };
+    // const { state, dispatch } = useStore();
+
+    // let modalState = computed(() => state.modal);
+
+    // console.log("🚀 ~ setup ~ modalState:", modalState)
+
+    const { modal, closeModal } = useModal();
+
+    // const closeModal = () => {
+    //   dispatch("closeModal");
+    // }
+
     return {
-      modalState,
+      modal,
       closeModal,
     };
   },
+
   components: {
     Icon,
   },
@@ -28,7 +38,7 @@ export default   {
 </script>
 <template>
   <div
-    v-if="modalState"
+    v-if="modal.isOpen"
     class="h-full flex justify-center items-center z-[999] overflow-auto w-full absolute top-0 left-0 backdrop-blur-sm"
   >
     <div

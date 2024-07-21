@@ -1,18 +1,17 @@
-<script>
 import { createStore } from "vuex";
-
 export default createStore({
+  namespaced: true,
   state: {
-    isModalOpen: false,
+    modal: false,
     toggle: false,
   },
 
   mutations: {
     openModal(state) {
-      state.isModalOpen = true;
+      state.modal = true;
     },
     closeModal(state) {
-      state.isModalOpen = false;
+      state.modal = false;
     },
     toggle(state) {
       state.toggle = !state.toggle;
@@ -32,8 +31,7 @@ export default createStore({
   },
 
   getters: {
-    isModalOpen: (state) => state.isModalOpen,
+    modalState: (state) => state.modal,
     toggle: (state) => state.toggle,
   },
 });
-</script>

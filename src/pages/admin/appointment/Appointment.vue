@@ -1,11 +1,16 @@
 <script>
+import { onMounted, reactive } from "vue";
 import { appointments } from "../../../data/index";
 import Table from "./table.vue";
+import { getAppointments } from "../../../api/appointments";
+import AddAppointmentFrom from "../../../components/Dashboard/appointment/AddAppointmentFrom.vue";
 export default {
   name: "patient",
   components: {
     Table,
+    AddAppointmentFrom,
   },
+
   data() {
     return {
       headers: [
@@ -21,6 +26,20 @@ export default {
       appointments,
     };
   },
+
+  setup() {
+    const state = reactive({
+      appointments: [],
+    });
+
+    onMounted(async () => {
+      await getAppointments(state);
+    });
+
+    return {
+      state,
+    };
+  },
 };
 </script>
 <template>
@@ -33,6 +52,7 @@ export default {
         <button class="btn-primary">Add New Appointment</button>
       </div>
     </div>
-    <Table :data="appointments" :headers="headers" />
+    <AddAppointmentFrom key="addAppointment" />
+    <Table :data="state.appointments" :headers="headers" />
   </div>
 </template>

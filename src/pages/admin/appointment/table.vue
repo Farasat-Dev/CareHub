@@ -19,16 +19,14 @@ export default {
 };
 </script>
 <template>
-  <div class="block w-full mt-10 border border-gray-600 rounded-lg">
+  <div class="block w-full mt-10 border border-gray-600 ">
     <table class="items-center w-full bg-transparent">
       <thead>
         <tr>
           <th
             v-for="(item, index) in headers"
             :key="index"
-            :class="`table-header ${
-              index === 0 || index === 5 ? 'rounded-t-lg' : ''
-            }`"
+            :class="`table-header`"
           >
             {{ item }}
           </th>

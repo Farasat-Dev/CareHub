@@ -24,7 +24,7 @@
   @apply border-t-0 px-4 align-middle text-sm font-normal whitespace-nowrap p-4 text-left;
 }
 .btn-primary {
-  @apply bg-primary text-white text-sm font-semibold p-3 hover:bg-white hover:text-tertiary transition-all duration-500 rounded;
+  @apply bg-primary text-white text-sm font-semibold p-3 hover:bg-orange-600 transition-all duration-500 rounded;
 }
 .input {
   @apply block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring

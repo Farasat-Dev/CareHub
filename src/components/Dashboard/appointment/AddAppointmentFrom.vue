@@ -2,19 +2,19 @@
 import { Field, Form, ErrorMessage } from "vee-validate";
 import { onMounted } from "vue";
 import * as yup from "yup";
-import { createPatient } from "../../api/patients.vue";
+import { createDoctor } from "../../../api/doctor.vue";
 
 const schema = yup.object({
-  patientName: yup.string().required(),
-  dateOfCheckIn: yup.string().min(6).required(),
-  doctorAssigned: yup.string().required(),
-  disease: yup.string().required(),
+  doctorName: yup.string().required(),
+  dateOfJoining: yup.string().min(6).required(),
+  specialization: yup.string().required(),
+  schedule: yup.string().required(),
+  contact: yup.string().required(),
   status: yup.string().required(),
-  roomNo: yup.number().required(),
 });
 
 function onSubmit(values) {
-  createPatient(values);
+  createDoctor(values);
 }
 
 onMounted(async () => {
@@ -28,44 +28,44 @@ onMounted(async () => {
   <Form :validation-schema="schema" @submit="onSubmit">
     <div class="grid grid-cols-2 px-6 gap-4 mt-5">
       <div class="flex flex-col justify-start items-start">
-        <label for="patientName" class="label">Patient Name</label>
+        <label for="doctorName" class="label"> Name</label>
         <Field
-          name="patientName"
-          placeholder="Enter patient name"
+          name="doctorName"
+          placeholder="Enter doctor name"
           type="text"
           class="w-full rounded-lg"
         />
-        <ErrorMessage name="patientName" class="text-primary" />
+        <ErrorMessage name="doctorName" class="text-primary" />
       </div>
       <div class="flex flex-col justify-start items-start">
-        <label for="dateOfCheckIn" class="label">Date Of Check In </label>
+        <label for="dateOfJoining" class="label">dateOfJoining </label>
         <Field
-          name="dateOfCheckIn"
+          name="dateOfJoining"
           placeholder="Enter date"
           type="date"
           class="w-full rounded-lg"
         />
-        <ErrorMessage name="dateOfCheckIn" class="text-primary" />
+        <ErrorMessage name="dateOfJoining" class="text-primary" />
       </div>
       <div class="flex flex-col justify-start items-start">
-        <label for="doctorAssigned" class="label">Doctor Assigned</label>
+        <label for="specialization" class="label">specialization</label>
         <Field
-          name="doctorAssigned"
+          name="specialization"
           placeholder=" Enter doctor "
           type="text"
           class="w-full rounded-lg"
         />
-        <ErrorMessage name="doctorAssigned" class="text-primary" />
+        <ErrorMessage name="specialization" class="text-primary" />
       </div>
       <div class="flex flex-col justify-start items-start">
-        <label for="disease" class="label">Disease</label>
+        <label for="schedule" class="label">schedule</label>
         <Field
-          name="disease"
-          placeholder="Enter disease"
+          name="schedule"
+          placeholder="Enter schedule"
           type="text"
           class="w-full rounded-lg"
         />
-        <ErrorMessage name="disease" class="text-primary" />
+        <ErrorMessage name="schedule" class="text-primary" />
       </div>
       <div class="flex flex-col justify-start items-start">
         <label for="status" class="label">status</label>
@@ -78,14 +78,14 @@ onMounted(async () => {
         <ErrorMessage name="status" class="text-primary" />
       </div>
       <div class="flex flex-col justify-start items-start">
-        <label for="roomNo" class="label">Room No</label>
+        <label for="contact" class="label">contact</label>
         <Field
-          name="roomNo"
+          name="contact"
           placeholder="Enter room"
           type="number"
           class="w-full rounded-lg"
         />
-        <ErrorMessage name="roomNo" class="text-primary" />
+        <ErrorMessage name="contact" class="text-primary" />
       </div>
     </div>
     <div class="py-5">

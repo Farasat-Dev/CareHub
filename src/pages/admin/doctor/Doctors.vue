@@ -1,15 +1,14 @@
 <script>
-import { computed, ref } from "vue";
 import { Doctors } from "../../../data/index";
 import Table from "./table.vue";
-import { useStore } from "vuex";
-import { onMounted } from "vue";
-import axios from "axios";
-
+import { onMounted, reactive } from "vue";
+import { getDoctors } from "../../../api/doctor.vue";
+import AddDoctorForm from "../../../components/Dashboard/doctors/AddDoctorForm.vue";
 export default {
-  name: "patient",
+  name: "doctors",
   components: {
     Table,
+    AddDoctorForm,
   },
 
   data() {
@@ -22,45 +21,22 @@ export default {
         "Contact",
         "Status",
       ],
-      Doctors,
+      // Doctors,
     };
   },
 
   setup() {
-    // const doctorsData = ref([]);
-    const { state, dispatch } = useStore();
-
-    const toggle = computed(() => state.toggle);
-
-    const { doctors, getDoctors } = computed(() => state.doctors);
-
-    console.log("🚀 ~ setup ~ doctors:", doctors);
-
-    const toggleFunction = () => {
-      dispatch("toggle");
-    };
-
-    // const getDoctors = async () => {
-    //   try {
-    //     const response = await axios.get(
-    //       "http://localhost:5000/v1/api/doctors"
-    //     );
-
-    //     doctorsData.value = response.data;
-    //     console.log("🚀 ~ getDoctors ~ doctorsData:", doctorsData.value);
-    //   } catch (error) {
-    //     console.log("🚀 ~ getPatients ~ error:", error);
-    //   }
-    // };
+    const state = reactive({
+      show: false,
+      doctors: [],
+    });
 
     onMounted(async () => {
-      await getDoctors();
+      await getDoctors(state);
     });
 
     return {
-      toggle,
-      toggleFunction,
-      doctors,
+      state,
     };
   },
 };
@@ -73,6 +49,11 @@ export default {
       <input type="search" class="rounded bg-secondary" placeholder="search" />
       <button class="btn-primary">Add New Doctor</button>
     </div>
-    <Table :data="doctors" :headers="headers" />
+
+
+    <div class="text-center">
+      <AddDoctorForm />
+    </div>
+    <Table :data="state.doctors" :headers="headers" />
   </div>
 </template>

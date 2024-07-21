@@ -1,4 +1,6 @@
 <script>
+import { formatDate } from "../../../utills/helpers/dateFormat";
+
 export default {
   props: {
     headers: {
@@ -16,19 +18,24 @@ export default {
       console.log("test", data);
     },
   },
+  setup() {
+    return {
+      formatDate,
+    };
+  },
 };
 </script>
 <template>
-  <div class="block w-full mt-10 border border-gray-600 rounded-lg">
-    <table class="items-center w-full bg-transparent">
+  <div
+    class="block w-full mt-10 border border-gray-600 rounded-lg overflow-auto"
+  >
+    <table class="items-center w-full bg-transparent ovverflow-auto">
       <thead>
         <tr>
           <th
             v-for="(item, index) in headers"
             :key="index"
-            :class="`table-header ${
-              index === 0 || index === 5 ? 'rounded-t-lg' : ''
-            }`"
+            :class="`table-header `"
           >
             {{ item }}
           </th>
@@ -46,7 +53,7 @@ export default {
         </tr>
         <tr class="text-gray-300" v-for="(item, index) in data" :key="index">
           <th class="table-data">
-            {{ item?.dateOfJoining }}
+            {{ formatDate(item?.dateOfJoining) }}
           </th>
           <td class="table-data">
             {{ item?.doctorName }}
@@ -55,7 +62,7 @@ export default {
             {{ item?.specialization }}
           </td>
           <td class="table-data">
-            {{ item?.schedule }}
+            {{ formatDate(item?.schedule) }}
           </td>
           <td class="table-data">
             {{ item?.contact }}

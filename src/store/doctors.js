@@ -1,4 +1,3 @@
-<script>
 import { createStore } from "vuex";
 import { get } from "../http/axios";
 
@@ -28,9 +27,8 @@ export default createStore({
     },
   },
 
-  getters: {
-    getDoctors: (state) => state.doctors,
-  },
+  // getters: {
+  //   getDoctors: (state) => state.doctors,
+  // },
 });
 
-</script>

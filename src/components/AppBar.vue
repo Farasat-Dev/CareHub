@@ -1,9 +1,19 @@
 <script>
 import { Icon } from "@iconify/vue";
+import { computed } from "vue";
+import { useStore } from "vuex";
 export default {
-  name: "AppBar",
   components: {
     Icon,
+  },
+  setup() {
+    // store
+    const { commit, state, getters } = useStore();
+    let ToggleSidebarState = computed(() => getters.getSidebar());
+
+    const toggleSidebar = () => {
+      commit("toggleSidebar");
+    };
   },
 };
 </script>
@@ -11,7 +21,11 @@ export default {
 <template>
   <div class="bg-secondary shadow-lg p-3 flex justify-between">
     <div class="flex gap-3 items-center ps-5">
-      <Icon icon="material-symbols:menu-open" class="text-white text-3xl" />
+      <Icon
+        v-on="{ click: toggleSidebar }"
+        icon="material-symbols:menu-open"
+        class="text-white text-3xl"
+      />
       <Icon
         icon="material-symbols:mark-email-unread"
         class="text-red-500 text-xl"
